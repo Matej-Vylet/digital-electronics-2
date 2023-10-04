@@ -25,15 +25,16 @@
 /* Includes ----------------------------------------------------------*/
 #include <avr/io.h>     // AVR device-specific IO definitions
 #include <util/delay.h> // Functions for busy-wait delay loops
-// #include <gpio.h>       // GPIO library for AVR-GCC
+#include <gpio.h>       // GPIO library for AVR-GCC
 
 
 // -----
 // This part is needed to use Arduino functions but also physical pin
 // names. We are using Arduino-style just to simplify the first lab.
-#include "Arduino.h"
-#define PB5 13          // In Arduino world, PB5 is called "13"
-#define PB0 8
+//#include "Arduino.h"
+#define PB5 5          // In Arduino world, PB5 is called "13"
+#define PB0 0
+#define PD2 2
 // -----
 
 
@@ -45,20 +46,27 @@
  **********************************************************************/
 int main(void)
 {
+    
     uint8_t led_value = 0;  // Local variable to keep LED status
 
     // Set pins where LEDs are connected as output
     // Ver 1: Arduino style
-    pinMode(LED_GREEN, OUTPUT);
-    pinMode(LED_RED, OUTPUT);
+   // pinMode(LED_GREEN, OUTPUT);
+   // pinMode(LED_RED, OUTPUT);
 
     // Ver 2: Low-level (register) style
+    //DDRB |= (1<<LED_GREEN);
+    //DDRB |= (1<<LED_RED);
 
     // Ver 3: Library function style
-
+    GPIO_mode_output(&DDRB, LED_GREEN);
+    GPIO_mode_output(&DDRB, LED_RED);
+    GPIO_mode_input_pullup(&DDRD,PD2 );
     // Infinite loop
     while (1)
     {
+      if(GPIO_read(&PIND, PD2)==0)
+      {
         // Pause several milliseconds
         _delay_ms(SHORT_DELAY);
 
@@ -66,15 +74,25 @@ int main(void)
         if (led_value == 0) {
             led_value = 1;
             // Set pin(s) to HIGH
-            digitalWrite(LED_GREEN, HIGH);
-            digitalWrite(LED_RED, HIGH);
+          //  digitalWrite(LED_GREEN, HIGH);
+          //PORTB |= (1<<LED_GREEN);
+          //PORTB |= (1<<LED_RED);
+           // digitalWrite(LED_RED, HIGH);
+           GPIO_write_high(&PORTB, LED_GREEN);
+           GPIO_write_low(&PORTB, LED_RED);
+
         }
         else {
             led_value = 0;
             // Clear pin(s) to LOW
-            digitalWrite(LED_GREEN, LOW);
-            digitalWrite(LED_RED, LOW);
+           // digitalWrite(LED_GREEN, LOW);
+           //PORTB &= ~(1<<LED_GREEN);
+           //PORTB &= ~(1<<LED_RED);
+           // digitalWrite(LED_RED, LOW);
+           GPIO_write_low(&PORTB, LED_GREEN);
+           GPIO_write_high(&PORTB, LED_RED);
         }
+      }
     }
 
     // Will never reach this
