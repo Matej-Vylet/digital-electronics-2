@@ -32,12 +32,15 @@
 /* Global variables --------------------------------------------------*/
 // Declaration of "dht12" variable with structure "DHT_values_structure"
 struct DHT_values_structure {
-   uint8_t hum_int;
-   uint8_t hum_dec;
-   uint8_t temp_int;
-   uint8_t temp_dec;
-   uint8_t checksum;
+   uint16_t hum_int;
+   uint16_t hum_dec;
+   uint16_t temp_int;
+   uint16_t temp_dec;
+   uint16_t checksum;
+   uint32_t cap_hum;
 } dht12;
+uint16_t dry_max = 900;
+uint16_t wet_max = 670;
 
 // Flag for printing new data from sensor
 volatile uint8_t new_sensor_data = 0;
@@ -49,6 +52,7 @@ volatile uint8_t new_sensor_data = 0;
 #define SENSOR_TEMP_MEM 2
 #define SENSOR_CHECKSUM 4
 #define AN PC0
+#define RELE PB2
 uint16_t value = 0;
 
 
@@ -60,9 +64,13 @@ uint16_t value = 0;
 **********************************************************************/
 int main(void)
 {
-  GPIO_mode_output(&DDRB, AN);
-      ADMUX |= (1<<REFS0);
+    /* GPIO_mode_output(&DDRB, AN); */
+    GPIO_mode_output(&DDRB, RELE);
+    
+    ADMUX |= (1<<REFS0);
     ADMUX &= ~(1<<REFS1);
+
+    ADMUX &= ~((1<<MUX3) | (1<<MUX2) | (1<<MUX1) | (1<<MUX0) );
 
     // Enable ADC module
     ADCSRA |= (1<<ADEN);
@@ -112,42 +120,66 @@ int main(void)
 
     // Infinite loop
     while (1) {
-      //uart_puts(value);
+      
         if (new_sensor_data == 1) {
 
-            oled_gotoxy(0,radek);
+            oled_gotoxy(0,0);
             oled_charMode(NORMALSIZE);
+
             itoa(dht12.temp_int, string, 10);
             oled_puts(string);
             uart_puts(string);
             uart_puts(".");
             oled_puts(".");
+
             itoa(dht12.temp_dec, string, 10);
             uart_puts(string);
             uart_puts(" °C\t");
             oled_puts(string);
             oled_puts("C ");
+
             itoa(dht12.hum_int, string, 10);
             uart_puts(string);
             uart_puts(".");
             oled_puts(string);
             oled_puts(".");
+
             itoa(dht12.hum_dec, string, 10);
+            uart_puts(string);
+            uart_puts(" % ");
+            oled_puts(string);
+            oled_puts(" % ");
+
+            itoa(dht12.cap_hum,string,10);
             uart_puts(string);
             uart_puts(" % \r\n");
             oled_puts(string);
-            oled_puts("% \r\n");
+            oled_puts(" % \r\n");
+
+
 
             oled_display();
-            if(radek<8)
+
+            if( dht12.cap_hum>870) //je sucho
+              {
+                 GPIO_write_low(&PORTB, RELE);
+                 // PORTB &= ~(1<<RELE);
+              }
+              if(dht12.cap_hum<700)
+             {
+                GPIO_write_high(&PORTB, RELE);
+               // PORTB |= (1<<RELE);
+             }
+            /* if(radek<8)
             {
               radek++;
             }
             else
             {
-              radek=0;
               oled_clrscr();
-            }
+              radek=0;
+              
+            } */
 
             // Do not print it again and wait for the new data
             new_sensor_data = 0;
@@ -180,6 +212,7 @@ ISR(TIMER1_OVF_vect)
         dht12.temp_int = twi_read(TWI_ACK);
         dht12.temp_dec = twi_read(TWI_NACK);
         twi_stop();
+        ADCSRA |= (1<<ADSC);
 
 
 
@@ -188,17 +221,20 @@ ISR(TIMER1_OVF_vect)
     twi_stop();
 }
 
-/* ISR(ADC_vect)
+ISR(ADC_vect)
 {
-    static uint16_t Value;
+    static uint16_t value;
     
     char string[4];  // String for converted numbers by itoa()
 
     // Read converted value
     // Note that, register pair ADCH and ADCL can be read as a 16-bit value ADC
     value = ADC;
-     itoa(Value, string, 10);
-    uart_puts(string);
+    itoa(value, string, 10);
+    dht12.cap_hum = value;
+
+   
     
-} */
+    
+}
 
