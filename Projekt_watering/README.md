@@ -1,8 +1,8 @@
 # Smart plant watering system and data logger
 
 ### Členové skupiny
- -Matěj Výlet
- -Martin Borski
+ - Matěj Výlet
+ - Martin Borski
 
 ## Cíl projektu
  Vytvořit systém na zalévání květin pomocí mikrokontroleru Arduino Uno, relé a senzorů teploty a vlhkosti. Dále ukládat relevantní data do paměti a následně je vypsat.
@@ -53,19 +53,19 @@ Hodiny udávající reálný čas (real time clock). Obsahují též paměť EEP
 ## Popis softwaru
 Pro více podrobností se podívejte na dokumentaci Doxygenu.
 
-###gpio.h, gpio.c
+### gpio.h, gpio.c
 - Zapisuje a čte registry pinů Arduina.
-###timer.h
+### timer.h
 - Ovládá časovací moduly
--Používá se k časování přerušení
-###oled.h, oled.c
--Knihovna k zapisování hodnot teploty a vlhkosti na display
-###twi.h, twi.c
--Knihovna ovládající komunikaci přes sériovou sběrnici I2C
-###uart.h, uart.c
+- Používá se k časování přerušení
+### oled.h, oled.c
+- Knihovna k zapisování hodnot teploty a vlhkosti na display
+### twi.h, twi.c
+- Knihovna ovládající komunikaci přes sériovou sběrnici I2C
+### uart.h, uart.c
 - Umožňuje zápis a čtení dat ze sériové sběrnice UART, kerá slouží ke komunikaci s počítačem.
 
 ## Video
 
-##Reference
+## Reference
 
