@@ -28,12 +28,12 @@ Byl použit obvod DHT12 se zabudovaným senzorem teploty a vzdušné vlhkosti, a
 
 
 ### Kapacitní senzor vhlkosti
-Pomocí senzoru se monitoruje vlhkost hlíny a na základě procenta vlhkosti se zapíná a vypíná zavlažování pomocí relé. [Datasheet senzoru]()
+Pomocí senzoru se monitoruje vlhkost hlíny a na základě procenta vlhkosti se zapíná a vypíná zavlažování pomocí relé. [Datasheet senzoru](https://www.sigmaelectronica.net/wp-content/uploads/2018/04/sen0193-humedad-de-suelos.pdf).
 
 
 
 ### Relé
-Spínání čerpadla na vodu(není součástí projektu) je zajištěno relém. [Datasheet]()
+Spínání čerpadla na vodu(není součástí projektu) je zajištěno relém. [Datasheet]().
 
 
 
