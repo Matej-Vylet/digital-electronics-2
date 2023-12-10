@@ -38,7 +38,7 @@ Spínání čerpadla na vodu(není součástí projektu) je zajištěno relém. 
 
 
 ### Oled display 128x64
-Zobrazuje hodnoty teploty a vlhkosti a status zalévání.[Datasheet](https://www.datasheethub.com/wp-content/uploads/2022/08/SSD1306.pdf).
+Zobrazuje hodnoty teploty a vlhkosti a status zalévání. [Datasheet](https://www.datasheethub.com/wp-content/uploads/2022/08/SSD1306.pdf).
 
 
 
