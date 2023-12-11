@@ -20,7 +20,7 @@ Po překročení spodní hranice vlhkosti se začne zavlažovat do doby, než se
 Projekt byl vytvořen pro Arduino Uno s čipem ATmega328P. [Datasheet](https://ww1.microchip.com/downloads/en/DeviceDoc/Atmel-7810-Automotive-Microcontrollers-ATmega328P_Datasheet.pdf).
 
 ![pinout](https://docs.arduino.cc/static/2b141eb1cfe6f465a949c203e4af1b5f/A000066-pinout.png)
-Rozložení pinů na desce. [Zdroj obrázku](https://docs.arduino.cc/hardware/uno-rev3)
+[Obr. - Rozložení pinů na desce] (https://docs.arduino.cc/hardware/uno-rev3)
 
 
 
