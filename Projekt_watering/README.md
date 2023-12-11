@@ -66,7 +66,8 @@ Pro více podrobností se podívejte na dokumentaci Doxygenu.
 - Umožňuje zápis a čtení dat ze sériové sběrnice UART, kerá slouží ke komunikaci s počítačem.
 
 ## Vývojový diagram aplikace
-![vývojový diagram](https://github.com/Matej-Vylet/digital-electronics-2/assets/124773189/96640945-569b-42f5-a089-e8cffb5c962b)
+![vývojový diagram](https://github.com/Matej-Vylet/digital-electronics-2/assets/124773189/470273a2-88b7-4f4f-8d6e-2b0313c95bd9)
+
 
 ## Video
 
