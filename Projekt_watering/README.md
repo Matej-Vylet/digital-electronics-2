@@ -36,7 +36,7 @@ Pomocí senzoru se monitoruje vlhkost hlíny a na základě procenta vlhkosti se
 
 
 ### Relé
-Spínání čerpadla na vodu(není součástí projektu) je zajištěno relém. [Datasheet]().
+Spínání čerpadla na vodu(,které není součástí projektu) je zajištěno relém. [Datasheet]().
 
 
 
