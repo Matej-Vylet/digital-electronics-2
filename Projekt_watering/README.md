@@ -65,6 +65,9 @@ Pro více podrobností se podívejte na dokumentaci Doxygenu.
 ### uart.h, uart.c
 - Umožňuje zápis a čtení dat ze sériové sběrnice UART, kerá slouží ke komunikaci s počítačem.
 
+## Vývojový diagram aplikace
+![vývojový diagram](https://github.com/Matej-Vylet/digital-electronics-2/assets/124773189/96640945-569b-42f5-a089-e8cffb5c962b)
+
 ## Video
 
 ## Reference
