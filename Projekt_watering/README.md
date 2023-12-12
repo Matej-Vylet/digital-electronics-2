@@ -84,7 +84,7 @@ Data ukládáme pomocí UARTu a programu PuTTY. Ten čte sériový port a data z
 
 
 ## Video
-https://www.youtube.com/watch?v=iqaxpEFCBaQ
+[Video](https://www.youtube.com/watch?v=iqaxpEFCBaQ)
 
 ## Reference
 1. [Arduino datasheet](https://ww1.microchip.com/downloads/en/DeviceDoc/Atmel-7810-Automotive-Microcontrollers-ATmega328P_Datasheet.pdf)
