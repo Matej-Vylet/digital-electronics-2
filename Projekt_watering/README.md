@@ -17,7 +17,7 @@ Po překročení spodní hranice vlhkosti se začne zavlažovat do doby, než se
 
 
 ### Arduino Uno
-Projekt byl vytvořen pro Arduino Uno s čipem ATmega328P. [Datasheet](https://ww1.microchip.com/downloads/en/DeviceDoc/Atmel-7810-Automotive-Microcontrollers-ATmega328P_Datasheet.pdf).
+Projekt byl vytvořen pro Arduino Uno s čipem ATmega328P.
 
 ![pinout](https://docs.arduino.cc/static/2b141eb1cfe6f465a949c203e4af1b5f/A000066-pinout.png)
 [Obr. - Rozložení pinů na desce](https://docs.arduino.cc/hardware/uno-rev3)
@@ -26,28 +26,24 @@ Projekt byl vytvořen pro Arduino Uno s čipem ATmega328P. [Datasheet](https://w
 
 
 ### Senzor teploty
-Byl použit obvod DHT12 se zabudovaným senzorem teploty a vzdušné vlhkosti, ale v tomto projektu využíváme pouze měření teploty. [Datasheet](https://datasheetspdf.com/pdf-file/1147840/Aosong/DHT12/1).
-
+Byl použit obvod DHT12 se zabudovaným senzorem teploty a vzdušné vlhkosti, ale v tomto projektu využíváme pouze měření teploty. 
 ![DHT12](https://github.com/Matej-Vylet/digital-electronics-2/assets/124773189/8d7d2df3-afcf-4010-a112-27c3d926d82d)
 
 
 
 
 ### Kapacitní senzor vhlkosti
-Pomocí senzoru se monitoruje vlhkost hlíny a na základě procenta vlhkosti se zapíná a vypíná zavlažování pomocí relé. [Datasheet senzoru](https://www.sigmaelectronica.net/wp-content/uploads/2018/04/sen0193-humedad-de-suelos.pdf).
-
+Pomocí senzoru se monitoruje vlhkost hlíny a na základě procenta vlhkosti se zapíná a vypíná zavlažování pomocí relé.
 ![Senzor vlhkosti](https://github.com/Matej-Vylet/digital-electronics-2/assets/124773189/53a7a830-1072-40e3-a36a-d71ce7ea70e7)
 
 
 ### Relé
-Spínání čerpadla na vodu(,které není součástí projektu) je zajištěno relém. [Datasheet](https://dratek.cz/docs/produkty/0/919/songle_srd.pdf).
-
+Spínání čerpadla na vodu(,které není součástí projektu) je zajištěno relém. 
 ![Relé](https://github.com/Matej-Vylet/digital-electronics-2/assets/124773189/acbff0cf-3f77-4832-a41a-3b04d55694f8)
 
 
 ### Oled display 128x64
-Zobrazuje hodnoty teploty a vlhkosti a status zalévání. [Datasheet](https://www.datasheethub.com/wp-content/uploads/2022/08/SSD1306.pdf).
-
+Zobrazuje hodnoty teploty a vlhkosti a status zalévání. 
 ![Display](https://github.com/Matej-Vylet/digital-electronics-2/assets/124773189/3a8ec688-a55e-483b-97d3-d78d2285eaf7)
 
 
@@ -82,4 +78,11 @@ Pro více podrobností se podívejte na dokumentaci Doxygenu.
 ## Video
 
 ## Reference
+1. [Arduino datasheet](https://ww1.microchip.com/downloads/en/DeviceDoc/Atmel-7810-Automotive-Microcontrollers-ATmega328P_Datasheet.pdf)
+2. [Senzor teploty DHT12 datasheet](https://datasheetspdf.com/pdf-file/1147840/Aosong/DHT12/1)
+3. [Seznor vlhkosti datasheet](https://www.sigmaelectronica.net/wp-content/uploads/2018/04/sen0193-humedad-de-suelos.pdf)
+4. [Relé datasheet](https://dratek.cz/docs/produkty/0/919/songle_srd.pdf).
+5. [Oled display datasheet](https://www.datasheethub.com/wp-content/uploads/2022/08/SSD1306.pdf).
+
+
 
