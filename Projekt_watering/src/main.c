@@ -26,9 +26,9 @@
 #include <twi.h>            // I2C/TWI library for AVR-GCC
 #include <uart.h>           // Peter Fleury's UART library
 #include <stdlib.h>         // C library. Needed for number conversions
-#include <oled.h>
-#include <gpio.h>
-#include <stdio.h>
+#include <oled.h>           // Michael Köhler's oled library
+#include <gpio.h>           // GPIO library for AVR-GCC
+
 
 /* Global variables --------------------------------------------------*/
 // Declaration of "dht12" variable with structure "DHT_values_structure"
@@ -38,35 +38,23 @@ struct DHT_values_structure {
    uint16_t temp_int;
    uint16_t temp_dec;
    uint16_t checksum;
-   uint32_t cap_hum;
-   uint16_t mem1;
-   uint16_t mem2;
-   uint16_t mem3;
-   uint16_t mem4;
-   uint16_t mem5;
 } dht12;
-uint16_t dry_max = 900;
-uint16_t wet_max = 670;
-uint16_t value = 0;
 
+//Declaration of humidity variable
+uint32_t cap_hum; 
 
 // Flag for printing new data from sensor
 volatile uint8_t new_sensor_data = 0;
-
 
 // Slave and internal addresses of temperature/humidity sensor DHT12
 #define SENSOR_ADR 0x5c
 #define SENSOR_HUM_MEM 0
 #define SENSOR_TEMP_MEM 2
 #define SENSOR_CHECKSUM 4
+
+//Assingment of pins to macros
 #define AN PC0
 #define RELE PD2
-
-#define MEM_ADR 0x57
-#define MEM_DATA 0
-
-
-
 
 /* Function definitions ----------------------------------------------*/
 /**********************************************************************
@@ -78,10 +66,10 @@ int main(void)
 {
     GPIO_mode_output(&DDRD, RELE);
     
+    //set the ADMUX register
     ADMUX |= (1<<REFS0);
     ADMUX &= ~(1<<REFS1);
     ADMUX &= ~((1<<MUX3) | (1<<MUX2) | (1<<MUX1) | (1<<MUX0) );
-
     // Enable ADC module
     ADCSRA |= (1<<ADEN);
     // Enable conversion complete interrupt
@@ -89,9 +77,13 @@ int main(void)
     // Set clock prescaler to 128
     ADCSRA |= (1<<ADPS2 | 1<<ADPS1 | 1<<ADPS0);
 
+    //Set input capture register
     ICR1 = 20000;
-    OCR1A = AN;
 
+    //Set output compare register
+    OCR1A = AN; 
+
+    //Initialization of oled display
     oled_init(OLED_DISP_ON);
     oled_clrscr();
 
@@ -112,40 +104,27 @@ int main(void)
         uart_puts("Teperature\t");
         uart_puts("Humidity\r\n");
       }
-    else {
+    else 
+      {
         uart_puts("[ERROR] I2C device not detected\r\n");
         while (1);
-    }
-
-    if (twi_test_address(MEM_ADR) == 0)
-      {
-        uart_puts("memory detected\r\n");
-        
       }
-    else {
-        uart_puts("[ERROR] memory device not detected\r\n");
-        while (1);
-    }
 
     // Timer1
     TIM1_OVF_1SEC
     TIM1_OVF_ENABLE
 
-    TIM2_OVF_4MS
-    TIM2_OVF_ENABLE
-
-   
-
-
-    sei(); // Needed for UART
+    sei(); //Global interrupt enable
 
     // Infinite loop
     while (1) {
         if (new_sensor_data == 1)
           {
+            //Set cursor to the begining
             oled_gotoxy(0,0);
             oled_charMode(NORMALSIZE);
 
+            //Write temperature value to oled and UART
             itoa(dht12.temp_int, string, 10);
             oled_puts("Temperature: ");
             oled_puts(string);
@@ -159,80 +138,34 @@ int main(void)
             oled_puts(string);
             oled_puts(" °C \r\n\n");
 
-            itoa(dht12.cap_hum,string,10);
+            //Write humidity value to oled and UART
+            itoa(cap_hum,string,10);
             oled_puts("Humidity: ");
             uart_puts(string);
             uart_puts("\r\n");
             oled_puts(string);
             oled_puts(" % \r\n\n");
 
-            itoa(dht12.mem1,string,10);
-            uart_puts(string);
-            uart_puts("\t");
-            itoa(dht12.mem2,string,10);
-            uart_puts(string);
-            uart_puts("\t");
-            itoa(dht12.mem3,string,10);
-            uart_puts(string);
-            uart_puts("\t");
-            itoa(dht12.mem4,string,10);
-            uart_puts(string);
-            uart_puts("\t");
-            itoa(dht12.mem5,string,10);
-            uart_puts(string);
-            uart_puts("\t");
 
-
-
-            if( dht12.cap_hum<45) //je sucho
+            if(cap_hum<45) //Condition - humidity is too low
               {
                 GPIO_write_low(&PORTD, RELE);
                 oled_puts("Watering: ON ");                 
               }
-            if(dht12.cap_hum>85)
+            if(cap_hum>80)//Condition - humidity is too high
               {
                 GPIO_write_high(&PORTD, RELE);
                 oled_puts("Watering: OFF");  
               }
 
-
-              twi_start();
-       if (twi_write((MEM_ADR<<1) | TWI_WRITE) == 0) 
-      { twi_start();
-        // Set internal memory location
-        twi_write(0x00);
-        twi_stop();
-
-        // Read data from internal memory
-        twi_start();
-        twi_write((MEM_ADR<<1) | TWI_WRITE);
-        twi_write(dht12.hum_int);
-        twi_stop();
-        
-        twi_start();
-        twi_write((MEM_ADR<<1) | TWI_READ);
-        dht12.mem1 = twi_read(TWI_ACK);
-        dht12.mem2 = twi_read(TWI_ACK);
-        dht12.mem3 = twi_read(TWI_ACK);
-        dht12.mem4 = twi_read(TWI_ACK);
-        dht12.mem5 = twi_read(TWI_ACK);
-
-   
-        twi_stop();
-      }
-       
-      
-    twi_stop();
-
             // Do not print it again and wait for the new data
             new_sensor_data = 0;
             oled_display();
-          }
+            }
   }
     // Will never reach this
     return 0;
 }
-
 
 /* Interrupt service routines ----------------------------------------*/
 /**********************************************************************
@@ -258,48 +191,19 @@ ISR(TIMER1_OVF_vect)
         dht12.temp_dec = twi_read(TWI_NACK);
         twi_stop();
 
-
-
         ADCSRA |= (1<<ADSC);
         new_sensor_data = 1;
       }
 
 }
 
-/* ISR(TIMER2_OVF_vect)
-{
-  twi_start();
-       if (twi_write((MEM_ADR<<1) | TWI_WRITE) == 0) 
-      { twi_start();
-        // Set internal memory location
-        twi_write(0x00);
-        twi_stop();
-
-        // Read data from internal memory
-        twi_start();
-        twi_write(dht12.hum_int);
-        twi_stop();
-
-        twi_start();
-        twi_write((MEM_ADR<<1) | TWI_READ);
-        dht12.mem1 = twi_read(TWI_ACK);
-   
-        twi_stop();
-      }
-       
-      
-    twi_stop();
-} */
 
 ISR(ADC_vect)
 {
     static uint16_t value;
-    
-   
-
     // Read converted value
     // Note that, register pair ADCH and ADCL can be read as a 16-bit value ADC
     value = ADC;
-    dht12.cap_hum =(950-value)*100/300;  
+    cap_hum =(950-value)*100/300;  
 }
 
