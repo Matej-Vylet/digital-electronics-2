@@ -91,6 +91,11 @@ Data ukládáme pomocí UARTu a programu PuTTY. Ten čte sériový port a data z
 3. [Seznor vlhkosti datasheet](https://www.sigmaelectronica.net/wp-content/uploads/2018/04/sen0193-humedad-de-suelos.pdf)
 4. [Relé datasheet](https://dratek.cz/docs/produkty/0/919/songle_srd.pdf).
 5. [Oled display datasheet](https://www.datasheethub.com/wp-content/uploads/2022/08/SSD1306.pdf).
+6. Obrázky použité ve schématu
+- [Arduino](https://europe1.discourse-cdn.com/arduino/original/4X/9/a/5/9a5829473ecd54e508efe20b8e9bf333eed36795.jpeg)
+- [Display](https://www.circuitgeeks.com/wp-content/uploads/2021/07/I2C-OLED-Display-pinout.png)
+- [Senzor vlhkosti](https://img.fruugo.com/product/3/60/169151603_max.jpg)
+- [Senzor teploty](https://cu.lnwfile.com/_/cu/_raw/d1/q1/qq.gif)
 
 
 
