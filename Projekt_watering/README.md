@@ -62,7 +62,7 @@ Pro více podrobností se podívejte na dokumentaci Doxygenu.
 ## Ukládání dat
 Data ukládáme pomocí UARTu a programu PuTTY. Ten čte sériový port a data zapisuje do .csv souboru, který následně lze otevřít v Excelu. Po opětovném zapnutí desky se data ukládají do téhož souboru pod data již existující.
 
-#### nastavení programu PuTTY
+#### Nastavení programu PuTTY
 ![session](https://github.com/Matej-Vylet/digital-electronics-2/assets/124773189/36b0be4a-0fbe-4d14-8bdb-0db85694d950)
 ![logging](https://github.com/Matej-Vylet/digital-electronics-2/assets/124773189/d7193cca-7fed-4e6f-8c59-5745243bb8db)
 
