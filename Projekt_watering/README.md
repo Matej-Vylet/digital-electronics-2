@@ -6,9 +6,11 @@
 
 ## Cíl projektu
  Vytvořit systém na zalévání květin pomocí mikrokontroleru Arduino Uno, relé a senzorů teploty a vlhkosti. Dále ukládat relevantní data do paměti a následně je vypsat.
+
+
 #### Řešení
  Za pomoci seznoru vlhkosti a teploty určíme bod, kdy se zapne a vypne zavlažování pomocí relé. 
-Po překročení spodní hranice vlhkosti se začne zavlažovat do doby, než se dostaneme k horní hranici vlhkosti, kde se zavlažování vypne. Ovládání senzorů a relé je zajištěno mikrokontrolerem Arduino Uno s čipem ATmega328P.
+Po překročení spodní hranice vlhkosti se začne zavlažovat do doby, než se dostaneme k horní hranici vlhkosti, kde se zavlažování vypne. Ovládání senzorů a relé je zajištěno mikrokontrolerem Arduino Uno s čipem ATmega328P. Ukládání hodnot je zajištěno pomocí UARTu a programu PuTTY.
 
 ## Popis hardwarového provedení
 ### Schéma zapojení
