@@ -46,9 +46,6 @@ Zobrazuje hodnoty teploty a vlhkosti a status zalévání. [Datasheet](https://w
 
 
 
-### Časový modul se zabudovanou pamětí RTC DS3231
-Hodiny udávající reálný čas (real time clock). Obsahují též paměť EEPROM k ukládání dat vlhkosti a teploty. [Datasheet RTC modulu](https://www.analog.com/media/en/technical-documentation/data-sheets/ds3231.pdf), 
-[datasheet EEPROM paměti](https://ww1.microchip.com/downloads/en/devicedoc/doc0336.pdf).
 
 
 
