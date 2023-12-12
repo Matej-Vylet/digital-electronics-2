@@ -20,7 +20,7 @@ Po překročení spodní hranice vlhkosti se začne zavlažovat do doby, než se
 
 
 ### Arduino Uno
-Projekt byl vytvořen pro Arduino Uno s čipem ATmega328P.
+Projekt byl vytvořen pro Arduino Uno s čipem ATmega328P. Je to hlavní výpočetní jednotka a zajišťuje komunikaci mezi všemi periferiemi. 
 
 ![pinout](https://docs.arduino.cc/static/2b141eb1cfe6f465a949c203e4af1b5f/A000066-pinout.png)
 [Obr. - Rozložení pinů na desce](https://docs.arduino.cc/hardware/uno-rev3)
@@ -29,24 +29,24 @@ Projekt byl vytvořen pro Arduino Uno s čipem ATmega328P.
 
 
 ### Senzor teploty
-Byl použit obvod DHT12 se zabudovaným senzorem teploty a vzdušné vlhkosti, ale v tomto projektu využíváme pouze měření teploty. 
+Byl použit obvod DHT12 se zabudovaným senzorem teploty a vzdušné vlhkosti, ale v tomto projektu využíváme pouze měření teploty. S mikrokontrolerem komunikuje pomocí sériové sběrnice I2C. Jeho adresa je 0x5c.
 ![DHT12](https://github.com/Matej-Vylet/digital-electronics-2/assets/124773189/8d7d2df3-afcf-4010-a112-27c3d926d82d)
 
 
 
 
 ### Kapacitní senzor vhlkosti
-Pomocí senzoru se monitoruje vlhkost hlíny a na základě procenta vlhkosti se zapíná a vypíná zavlažování pomocí relé.
+Pomocí senzoru se monitoruje vlhkost hlíny a na základě procenta vlhkosti se zapíná a vypíná zavlažování pomocí relé. S Arduinem komunikuje pomocí analogového signálum, který se přeloží do diskrétních hodnot 0 až 1023. Ty se poté přepočítají na hodnotu vlhkosti.
 ![Senzor vlhkosti](https://github.com/Matej-Vylet/digital-electronics-2/assets/124773189/53a7a830-1072-40e3-a36a-d71ce7ea70e7)
 
 
 ### Relé
-Spínání čerpadla na vodu(,které není součástí projektu) je zajištěno relém. 
+Spínání čerpadla na vodu (které není součástí projektu) je zajištěno relém. Je ovládáno digitálním signálem.
 ![Relé](https://github.com/Matej-Vylet/digital-electronics-2/assets/124773189/acbff0cf-3f77-4832-a41a-3b04d55694f8)
 
 
 ### Oled display 128x64
-Zobrazuje hodnoty teploty a vlhkosti a status zalévání. 
+Zobrazuje hodnoty teploty a vlhkosti a status zalévání. Data dostává pomocí sběrnice I2C, kde má adresu 0x3c.
 ![Display](https://github.com/Matej-Vylet/digital-electronics-2/assets/124773189/3a8ec688-a55e-483b-97d3-d78d2285eaf7)
 
 
