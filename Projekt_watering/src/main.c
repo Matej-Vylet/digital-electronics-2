@@ -191,12 +191,12 @@ ISR(TIMER1_OVF_vect)
         dht12.temp_dec = twi_read(TWI_NACK);
         twi_stop();
 
+        //Start AD convertion
         ADCSRA |= (1<<ADSC);
         new_sensor_data = 1;
       }
 
 }
-
 
 ISR(ADC_vect)
 {
@@ -204,6 +204,8 @@ ISR(ADC_vect)
     // Read converted value
     // Note that, register pair ADCH and ADCL can be read as a 16-bit value ADC
     value = ADC;
+
+    //Calculate approximate humidity value from sensor analog value
     cap_hum =(950-value)*100/300;  
 }
 
