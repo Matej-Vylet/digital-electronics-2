@@ -59,6 +59,11 @@ Zobrazuje hodnoty teploty a vlhkosti a status zalévání.
 ## Popis softwaru
 Pro více podrobností se podívejte na dokumentaci Doxygenu.
 
+
+![session](https://github.com/Matej-Vylet/digital-electronics-2/assets/124773189/36b0be4a-0fbe-4d14-8bdb-0db85694d950)
+![logging](https://github.com/Matej-Vylet/digital-electronics-2/assets/124773189/d7193cca-7fed-4e6f-8c59-5745243bb8db)
+
+
 ### gpio.h, gpio.c
 - Zapisuje a čte registry pinů Arduina.
 ### timer.h
