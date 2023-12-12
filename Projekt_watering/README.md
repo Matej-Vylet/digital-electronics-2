@@ -94,6 +94,7 @@ Data ukládáme pomocí UARTu a programu PuTTY. Ten čte sériový port a data z
 6. Obrázky použité ve schématu
 - [Relé](https://europe1.discourse-cdn.com/arduino/original/4X/9/a/5/9a5829473ecd54e508efe20b8e9bf333eed36795.jpeg)
 - [Display](https://www.circuitgeeks.com/wp-content/uploads/2021/07/I2C-OLED-Display-pinout.png)
+- [Arduino](https://github.com/Matej-Vylet/digital-electronics-2/blob/main/Projekt_watering/arduino.png)
 - [Senzor vlhkosti](https://img.fruugo.com/product/3/60/169151603_max.jpg)
 - [Senzor teploty](https://cu.lnwfile.com/_/cu/_raw/d1/q1/qq.gif)
 
