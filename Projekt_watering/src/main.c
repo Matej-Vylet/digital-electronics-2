@@ -1,18 +1,3 @@
-
-/***********************************************************************
- * 
- * The I2C (TWI) bus scanner tests all addresses and detects devices
- * that are connected to the SDA and SCL signals.
- * 
- * ATmega328P (Arduino Uno), 16 MHz, PlatformIO
- *
- * Copyright (c) 2023 Tomas Fryza
- * Dept. of Radio Electronics, Brno University of Technology, Czechia
- * This work is licensed under the terms of the MIT license.
- * 
- **********************************************************************/
-
-
 /* Defines -----------------------------------------------------------*/
 #ifndef F_CPU
 # define F_CPU 16000000  // CPU frequency in Hz required for UART_BAUD_SELECT
