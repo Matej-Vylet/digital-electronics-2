@@ -28,22 +28,32 @@ Projekt byl vytvořen pro Arduino Uno s čipem ATmega328P. [Datasheet](https://w
 ### Senzor teploty
 Byl použit obvod DHT12 se zabudovaným senzorem teploty a vzdušné vlhkosti, ale v tomto projektu využíváme pouze měření teploty. [Datasheet](https://datasheetspdf.com/pdf-file/1147840/Aosong/DHT12/1).
 
+![DHT12](https://github.com/Matej-Vylet/digital-electronics-2/assets/124773189/8d7d2df3-afcf-4010-a112-27c3d926d82d)
+
+
 
 
 ### Kapacitní senzor vhlkosti
 Pomocí senzoru se monitoruje vlhkost hlíny a na základě procenta vlhkosti se zapíná a vypíná zavlažování pomocí relé. [Datasheet senzoru](https://www.sigmaelectronica.net/wp-content/uploads/2018/04/sen0193-humedad-de-suelos.pdf).
 
+![Senzor vlhkosti](https://github.com/Matej-Vylet/digital-electronics-2/assets/124773189/53a7a830-1072-40e3-a36a-d71ce7ea70e7)
 
 
 ### Relé
 Spínání čerpadla na vodu(,které není součástí projektu) je zajištěno relém. [Datasheet](https://dratek.cz/docs/produkty/0/919/songle_srd.pdf).
 
+![Relé](https://github.com/Matej-Vylet/digital-electronics-2/assets/124773189/acbff0cf-3f77-4832-a41a-3b04d55694f8)
 
 
 ### Oled display 128x64
 Zobrazuje hodnoty teploty a vlhkosti a status zalévání. [Datasheet](https://www.datasheethub.com/wp-content/uploads/2022/08/SSD1306.pdf).
 
+![Display](https://github.com/Matej-Vylet/digital-electronics-2/assets/124773189/3a8ec688-a55e-483b-97d3-d78d2285eaf7)
 
+
+## Schéma zapojení
+
+![schema](https://github.com/Matej-Vylet/digital-electronics-2/assets/124773189/29c24e20-eb0a-469f-86a1-0b721720bd9e)
 
 
 
