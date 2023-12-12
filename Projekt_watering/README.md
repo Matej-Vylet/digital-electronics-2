@@ -11,7 +11,7 @@
 Po překročení spodní hranice vlhkosti se začne zavlažovat do doby, než se dostaneme k horní hranici vlhkosti, kde se zavlažování vypne. Ovládání senzorů a relé je zajištěno mikrokontrolerem Arduino Uno s čipem ATmega328P.
 
 ## Popis hardwarového provedení
-#### Schéma zapojení
+### Schéma zapojení
 ![schema](https://github.com/Matej-Vylet/digital-electronics-2/assets/124773189/29c24e20-eb0a-469f-86a1-0b721720bd9e)
 
 
