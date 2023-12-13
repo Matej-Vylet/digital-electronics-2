@@ -36,7 +36,7 @@ Byl použit obvod DHT12 se zabudovaným senzorem teploty a vzdušné vlhkosti, a
 
 
 ### Kapacitní senzor vhlkosti
-Pomocí senzoru se monitoruje vlhkost hlíny a na základě procenta vlhkosti se zapíná a vypíná zavlažování pomocí relé. S Arduinem komunikuje pomocí analogového signálum, který se přeloží do diskrétních hodnot 0 až 1023. Ty se poté přepočítají na hodnotu vlhkosti.
+Pomocí senzoru se monitoruje vlhkost hlíny a na základě procenta vlhkosti se zapíná a vypíná zavlažování pomocí relé. S Arduinem komunikuje pomocí analogového signálum, který se přeloží do diskrétních hodnot 0 až 1023. Ty se poté přepočítají na hodnotu vlhkosti. Vzorec cap_hum =(950-value)*100/300. 
 ![Senzor vlhkosti](https://github.com/Matej-Vylet/digital-electronics-2/assets/124773189/53a7a830-1072-40e3-a36a-d71ce7ea70e7)
 
 
